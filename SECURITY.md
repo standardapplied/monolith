@@ -1,5 +1,12 @@
 # Security
 
+> [!WARNING]
+> **Do not use 0.2.0 in production.** The published `monolith-codegen` 0.2.0 jar contains an SQL
+> injection in generated live-query invalidation code and an audit function without a pinned
+> `search_path`. `main` has both fixes but was never released, and a later review found further
+> defects, including in tenant isolation. No fixed 0.2.x version will be published; the project is
+> being rebuilt. The rest of this document describes the prototype's intent, not verified behaviour.
+
 Monolith is **experimental software (v0.x)**. It provides security and compliance _primitives_ in the
 database; it is **not** a turnkey HIPAA, SOC 2, or PCI control set. This document states plainly what is
 shipped, what is not, and where the responsibility boundary sits, so no one mistakes a building block for
