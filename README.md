@@ -2,6 +2,17 @@
 
 *Live, typed queries on real Postgres.*
 
+> [!WARNING]
+> **0.2.0 is a prototype. Do not use it in production.**
+>
+> - The `monolith-codegen` 0.2.0 jar on Maven Central generates live-query invalidation code that
+>   concatenates row values into SQL (SQL injection), and an audit function without a pinned
+>   `search_path`. Both are fixed on `main`, but no fixed version has been released.
+> - A review of `main` in November 2026 found defects in transactions, the connection pool, the
+>   queue, live queries and tenant isolation. The guarantees described below do not all hold.
+> - Monolith is being rebuilt. There will be no 0.2.x fix release; the next release replaces this
+>   code. Until then, treat this repository as a design reference only.
+
 Monolith is a set of small Java libraries for building applications on PostgreSQL where the schema,
 the typed data access, the client reader, and the live (reactive) queries all come from a single
 declaration. You write a record, sometimes carrying its SQL, and an annotation processor generates
